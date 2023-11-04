@@ -76,17 +76,142 @@
     </section>
 
 
+    <section class="about" id="about">
+        <div class="about-flex">
+            <div class="testing">
+                <div class="title-v2">
+                    <p>About Us</p>
+                    <h3 class="title-2">Discover Our Inspiring </h3>
+                    <h3 class="title-2">Mission Today</h3>
+                </div>
 
+                <div class="about-txt">
+                    <p>
+                        Welcome to Theresa Onuego Mega Brain Health and Education Foundation (TOOBEF), a beacon of hope
+                        and
+                        transformation in Enugu, Nigeria. Our foundation, spearheaded by the distinguished neurosurgeon
+                        and
+                        educator, Dr. Ozor I. I., is committed to making a profound impact on the lives of the less
+                        privileged.
+                    </p>
+
+                    <p class="strong"><strong>Our Mission</strong></p>
+                    <p>At TOOBEF, our mission is clear: to empower and uplift the less privileged members of our
+                        society. We
+                        believe in the transformative power of accessible healthcare, quality education, and
+                        humanitarian
+                        support. Through these pillars, we aim to create a brighter future for those who need it most.
+                    </p>
+
+
+
+                    <div class="program">
+                        <p class="strong"><strong>Our Programs</strong></p>
+                        <div class="prog-flex">
+                            <div class="fonc">
+                                <div class="prog">
+                                    <p class="p-head"><span>Medical Awareness</span></p>
+                                    <p class="p-txt">
+                                        We conducts targeted health education programs to create awareness about crucial
+                                        medical
+                                        issues within our community.</p>
+                                </div>
+                                <div class="prog">
+                                    <p class="p-head"><span>Medical Consultation</span></p>
+                                    <p class="p-txt">
+                                        We provide free medical consultations and treatments, ensuring that even the
+                                        most
+                                        vulnerable have access to healthcare services.</p>
+
+                                </div>
+                            </div>
+                            <div class="fonc">
+                                <div class="prog">
+                                    <p class="p-head"><span>Humanitarian Aid</span></p>
+                                    <p class="p-txt">
+                                        Our foundation distributes essential items, including food, toiletries, and
+                                        other
+                                        hospitality goods, to those in need, offering comfort and relief during
+                                        challenging
+                                        times.
+                                    </p>
+                                </div>
+                                <div class="prog">
+                                    <p class="p-head"><span>Scholarships</span></p>
+                                    <p class="p-txt">
+                                        TOOBEF extends a helping hand to promising students by offering scholarships at
+                                        the
+                                        primary,
+                                        secondary, and tertiary levels, empowering them to pursue their dreams and
+                                        aspirations.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="image">
+                <img src="images/placeholder.webp" alt="">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- <section class="carousels">
+        <div class="title">
+            <p>What We Do</p>
+            <h3>We Are In A Mission To</h3>
+            <h3>Help The Helpless</h3>
+        </div>
+        <div class="wrapper">
+            <i id="left" class="fa-solid fa-angle-left"></i>
+            <ul class="carousel">
+              <li class="card">
+                <div class="img"><img src="images/img-1.jpg" alt="img" draggable="false"></div>
+                <h2>Blanche Pearson</h2>
+                <span>Sales Manager</span>
+              </li>
+              <li class="card">
+                <div class="img"><img src="images/img-2.jpg" alt="img" draggable="false"></div>
+                <h2>Joenas Brauers</h2>
+                <span>Web Developer</span>
+              </li>
+              <li class="card">
+                <div class="img"><img src="images/img-3.jpg" alt="img" draggable="false"></div>
+                <h2>Lariach French</h2>
+                <span>Online Teacher</span>
+              </li>
+              <li class="card">
+                <div class="img"><img src="images/img-4.jpg" alt="img" draggable="false"></div>
+                <h2>James Khosravi</h2>
+                <span>Freelancer</span>
+              </li>
+              <li class="card">
+                <div class="img"><img src="images/img-5.jpg" alt="img" draggable="false"></div>
+                <h2>Kristina Zasiadko</h2>
+                <span>Bank Manager</span>
+              </li>
+              <li class="card">
+                <div class="img"><img src="images/img-6.jpg" alt="img" draggable="false"></div>
+                <h2>Donald Horton</h2>
+                <span>App Designer</span>
+              </li>
+            </ul>
+            <i id="right" class="fa-solid fa-angle-right"></i>
+          </div>
+      
+    </section> -->
 
 
 
     <footer>
         <div class="footer-title">
-           <div>
-            <a href="">
-                <h3>TOOBHEF</h3>
-            </a>
-           </div>
+            <div>
+                <a href="">
+                    <h3>TOOBHEF</h3>
+                </a>
+            </div>
             <div class="socials">
                 <i class="fa-brands fa-facebook-f"></i>
                 <i class="fa-brands fa-instagram"></i>
@@ -95,7 +220,7 @@
             </div>
         </div>
         <div class="content">
-            <div class="about">
+            <div class="about-foot">
                 <h4>About Us</h4>
                 <p>We are dedicated to promoting healthier and more educated lives for all, breaking barriers, and
                     fostering positive change within communities.</p>
@@ -172,6 +297,80 @@
         togglebtn.onclick = function () {
             dropDownMenu.classList.toggle('open')
         }
+
+
+        const wrapper = document.querySelector(".wrapper");
+        const carousel = document.querySelector(".carousel");
+        const firstCardWidth = carousel.querySelector(".card").offsetWidth;
+        const arrowBtns = document.querySelectorAll(".wrapper i");
+        const carouselChildrens = [...carousel.children];
+        let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
+        // Get the number of cards that can fit in the carousel at once
+        let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+        // Insert copies of the last few cards to beginning of carousel for infinite scrolling
+        carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
+            carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+        });
+        // Insert copies of the first few cards to end of carousel for infinite scrolling
+        carouselChildrens.slice(0, cardPerView).forEach(card => {
+            carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+        });
+        // Scroll the carousel at appropriate postition to hide first few duplicate cards on Firefox
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.offsetWidth;
+        carousel.classList.remove("no-transition");
+        // Add event listeners for the arrow buttons to scroll the carousel left and right
+        arrowBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                carousel.scrollLeft += btn.id == "left" ? -firstCardWidth : firstCardWidth;
+            });
+        });
+        const dragStart = (e) => {
+            isDragging = true;
+            carousel.classList.add("dragging");
+            // Records the initial cursor and scroll position of the carousel
+            startX = e.pageX;
+            startScrollLeft = carousel.scrollLeft;
+        }
+        const dragging = (e) => {
+            if (!isDragging) return; // if isDragging is false return from here
+            // Updates the scroll position of the carousel based on the cursor movement
+            carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+        }
+        const dragStop = () => {
+            isDragging = false;
+            carousel.classList.remove("dragging");
+        }
+        const infiniteScroll = () => {
+            // If the carousel is at the beginning, scroll to the end
+            if (carousel.scrollLeft === 0) {
+                carousel.classList.add("no-transition");
+                carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
+                carousel.classList.remove("no-transition");
+            }
+            // If the carousel is at the end, scroll to the beginning
+            else if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
+                carousel.classList.add("no-transition");
+                carousel.scrollLeft = carousel.offsetWidth;
+                carousel.classList.remove("no-transition");
+            }
+            // Clear existing timeout & start autoplay if mouse is not hovering over carousel
+            clearTimeout(timeoutId);
+            if (!wrapper.matches(":hover")) autoPlay();
+        }
+        const autoPlay = () => {
+            if (window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
+            // Autoplay the carousel after every 2500 ms
+            timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
+        }
+        autoPlay();
+        carousel.addEventListener("mousedown", dragStart);
+        carousel.addEventListener("mousemove", dragging);
+        document.addEventListener("mouseup", dragStop);
+        carousel.addEventListener("scroll", infiniteScroll);
+        wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+        wrapper.addEventListener("mouseleave", autoPlay);
+
     </script>
 </body>
 
