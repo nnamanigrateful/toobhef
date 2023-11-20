@@ -301,6 +301,7 @@ section .title h3{
 .about{
     padding: 2rem 3rem;
     background-image: url(images/about-bg.jpg);
+    width: 100%;
 }
 
 .about-txt{
@@ -784,7 +785,7 @@ footer .events img{
     max-width: 1250px;
     margin: 3rem auto;
     padding: 20px;
-    gap: 20px;
+    gap: 4rem;
     
 }
 
