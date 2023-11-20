@@ -2,12 +2,20 @@
 
 
 
+html{
+    scroll-behavior: smooth !important;
+}
+
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', Geneva, Tahoma, sans-serif;
+  
 }
+
+
 
 /* 09CC7F
    363A4B  background blur
@@ -115,6 +123,8 @@ header{
 /* Dropdown */
 .dropdown-menu{
     display: none;
+    z-index: 1000;
+    /* padding-bottom: 1rem; */
     position: absolute;
     right: 2rem;
     top: 60px;
@@ -128,7 +138,7 @@ header{
 }
 
 .dropdown-menu.open{
-    height: 240px;
+    height: 280px;
 }
 .dropdown-menu li{
     padding: 0.8rem;
@@ -140,6 +150,7 @@ header{
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 1rem;
 }
 
 
@@ -152,6 +163,8 @@ header{
     justify-content: center;
     align-items: center;
     align-self: center;
+    animation: movedown 1s ease-in-out forwards;
+    opacity: 0;
 }
 .body h1{
     margin: 0;
@@ -161,20 +174,26 @@ header{
     font-size: clamp(1.3rem, .5rem + 3vw, 3.5rem);
     font-weight: 900;
     padding-top: clamp(2rem, 7rem + 3vw, 15rem);
+    animation: movedown 1.1s ease-in-out forwards;
+    opacity: 0;
 }
 
 .body p{
     margin: 0;
-    max-width: 80%;
+    max-width: 60%;
     min-width: 60%;
-    font-size: clamp(.5rem, .7rem, 1rem);
+    font-size: .9rem;
     padding-top: 2%;
     text-align: center;
+    animation: movedown .8s ease-in-out forwards;
+    opacity: 0;
 }
 
 .hero-txt .action-btn{
     display: block;
     margin-top: 2rem !important;
+    animation: movedown .5s ease-in-out forwards;
+    opacity: 0;
 }
 
 
@@ -223,7 +242,7 @@ section .title h3{
     height: 20rem;
     background-color: #fff;
     /* border: #00C8E6 1px solid; */
-    transition: background-color .4s;
+    transition: background-color 1s;
     color: #05165f;
     display: flex;
     flex-direction: column;
@@ -240,6 +259,7 @@ section .title h3{
     height: 25rem;
     background-color: #00C8E6;
     color: #fff;
+    animation: moveArrow 1.8s alternate-reverse infinite;
 }
 
 .mission .box:hover{
@@ -288,7 +308,7 @@ section .title h3{
     
 }
 .about-txt p{
-    font-size: 12px;
+    font-size: .9rem;
     color: #05165f;
 }
 .about-txt .strong{
@@ -304,7 +324,7 @@ section .title h3{
     height: 1rem;
 }
 .prog-flex .p-txt{
-    font-size: 11px;
+    font-size: .77rem;
 }
 .program span{
     color: #00C8E6;
@@ -333,11 +353,12 @@ section .title h3{
 .carousels{
     display: flex;
     flex-direction: column;
-    padding: 0 35px;
+    padding: 3rem 1rem;
     align-items: center;
     justify-content: center;
     min-height: auto;
     color: #05165f;
+    background-color: #F8FCFF;
     /* background: linear-gradient(to left top, #031A9A, #8B53FF) !important; */
 }
 .wrapper {
@@ -442,7 +463,7 @@ section .title h3{
     font-size: 1.31rem;
   }
   .carousel .card .p-txt2{
-    font-size: 13px;
+    font-size: .85rem;
     height: 7rem;
   }
   
@@ -481,7 +502,7 @@ section .title h3{
   }
 
   .pannel p, .pannel li{
-    font-size: 13px;
+    font-size: .9rem;
     line-height: 1.8;
   }
   .pannel ul li{
@@ -495,6 +516,13 @@ section .title h3{
   .faq.active{
     border: none;
   }
+  .accordian-panel {
+    display: none;
+}
+
+.accordian-panel.show {
+    display: block;
+}
 
   
 
@@ -611,7 +639,10 @@ footer .events img{
         display: block;
     }
     .body{
-        height: 80vh;
+        height: 95vh;
+    }
+    .body h1{
+        padding-top: 4rem;
     }
     .about-flex{
         flex-direction: column;
@@ -649,6 +680,11 @@ footer .events img{
         font-size: 2rem;
     }
 
+    .body p{
+        font-size: .7rem;
+        line-height: 1.9;
+    }
+
     .mission{
         display: flex;
         flex-direction: column;
@@ -666,6 +702,9 @@ footer .events img{
         
     }
 
+    .pannel{
+        font-size: .75rem;
+    }
 
 
     footer{
@@ -690,11 +729,18 @@ footer .events img{
 
 @media(max-width: 450px){
     .body{
-        height: 70vh;
+        height: 64vh;
     }
-    /* .navbar .logo a{
-        font-size: 1.2rem;
-    } */
+    .body h1{
+        padding-top: 7rem;
+        font-size: 1rem;
+    }
+    .body p{
+        max-width: 82% !important;
+        padding-top: 1rem;
+       
+    }
+  
     .dropdown-menu{width: 85%;align-items: center; justify-content: center;}
 
 
@@ -736,25 +782,28 @@ footer .events img{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     max-width: 1250px;
-    margin: 150px auto;
+    margin: 3rem auto;
     padding: 20px;
     gap: 20px;
+    
 }
 
 .card-list .card-item {
+    width: 95%;
     background: #fff;
     padding: 26px;
     border-radius: 8px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
     list-style: none;
     cursor: pointer;
     text-decoration: none;
     border: 2px solid transparent;
     transition: border 0.5s ease;
+    
 }
 
 .card-list .card-item:hover {
-    border: 2px solid #000;
+    border: 2px solid #05165f;
 }
 
 .card-list .card-item img {
@@ -764,33 +813,28 @@ footer .events img{
     object-fit: cover;
 }
 
-.card-list span {
-    display: inline-block;
-    background: #F7DFF5;
-    margin-top: 32px;
-    padding: 8px 15px;
-    font-size: 0.75rem;
-    border-radius: 50px;
-    font-weight: 600;
+.card-list p, .card-list span{
+    color: #05165f;
+    padding-top: 1rem;
 }
 
 .card-list .developer {
-    background-color: #F7DFF5; 
-    color: #B22485;
+    background-color: #05165f4b; 
+    color: #05165f;
 }   
 
 .card-list .designer {
-    background-color: #d1e8ff;
-    color: #2968a8;
+    background-color: #05165f4b;
+    color: #05165f;
 }
 
 .card-list .editor {
-    background-color: #d6f8d6; 
-    color: #205c20;
+    background-color: #05165f4b; 
+    color: #05165f;
 }
 
 .card-item h3 {
-    color: #000;
+    color: #05165f;
     font-size: 1.438rem;
     margin-top: 28px;
     font-weight: 600;
@@ -824,5 +868,27 @@ footer .events img{
 @media screen and (max-width: 980px) {
     .card-list {
         margin: 0 auto;
+    }
+}
+
+
+
+
+@keyframes movedown  {
+    from{
+        transform: translateY(-150px);
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes moveArrow  {
+    from{
+        transform: translateY(-30px);
+    }
+    to{
+        transform: translateY(0);
     }
 }
