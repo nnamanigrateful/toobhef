@@ -12,7 +12,7 @@ html{
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', Geneva, Tahoma, sans-serif;
-  
+    /* overflow-x: hidden; */
 }
 
 
@@ -301,7 +301,8 @@ section .title h3{
 .about{
     padding: 2rem 3rem;
     background-image: url(images/about-bg.jpg);
-    width: 100%;
+    overflow-x: hidden;
+    
 }
 
 .about-txt{
