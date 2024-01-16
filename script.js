@@ -200,3 +200,28 @@
                 });
             });
         });
+
+
+        // Event details details
+        document.querySelectorAll('.card-item').forEach(card => {
+            card.addEventListener('click', function() {
+                // Toggle the expanded class for the clicked card
+                this.classList.toggle('expanded');
+        
+                // If any other card is expanded, collapse it
+                document.querySelectorAll('.card-item').forEach(otherCard => {
+                    if (otherCard !== this && otherCard.classList.contains('expanded')) {
+                        otherCard.classList.remove('expanded');
+                    }
+                });
+            });
+        });
+        
+        // Optional: if you add a close button, handle the click event to collapse the card
+        document.querySelectorAll('.close-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent the card click event from firing
+                this.closest('.card-item').classList.remove('expanded');
+            });
+        });
+        
